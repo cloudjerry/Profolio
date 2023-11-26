@@ -4,7 +4,13 @@ A simple RAG LangChain Implementation
 
 
 # Import library/package
-From 
+from langchain.embeddings import BedrockEmbeddings
+from langchain.indexes import VectorStoreIndexCreator
+from langchain.vectorstores import FAISS
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.document_loader import PyPDFLoader
+from langchain.llms.bedrock import Bedrock
+
 
 
 
