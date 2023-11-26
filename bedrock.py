@@ -36,12 +36,20 @@ embeddings = BedrockEmbeddings(
 
 
 # Create vector store, embeddings and derive the an index for the document
-
-
+index_creator = VectorStoreIndexCreator(
+  vectorestore_cls=FAISS,
+  embeddings=embeddings,
+  text_splitter=text_splitter
+)
+index = index_creator.from_loaders([loader])
 
 # Create the main text LLM for reasoning summarization QA
-
+llm_bedrock=Bedrock(...)
 
 
 # Invoke LLM -Search Query against Index, provide that as context to LLM
-
+response = index.query(
+  question = "What was the overall profit in 2022",
+  llm=llm_bedrock
+)
+print(response)
