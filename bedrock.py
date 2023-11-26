@@ -15,16 +15,24 @@ from langchain.llms.bedrock import Bedrock
 
 
 # Load document
-
+loader = PyPDFLoader(file_path="~/docs/shareholder-letter.pdf")
 
 
 # Spilt doc into smaller chunk before embedding
 
-
+text_splitter = RecursiveCharacterTextSplitter(
+  seperators = ["\n\n", "\n", ".", " "],
+  chunk_size=1000,
+  chunk_overlap=100
+)
 
 
 # Create Embedding client using bedrock Titan Embedding Model
-
+embeddings = BedrockEmbeddings(
+  credentials_profile_name=os.environ.get("..."),
+  region_name=os.environ.get("..."),
+  endpoint_url=os.environ.get("...")
+)
 
 
 # Create vector store, embeddings and derive the an index for the document
