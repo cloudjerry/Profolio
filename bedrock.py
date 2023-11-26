@@ -1,0 +1,4 @@
+# RAG with bedrock AWS
+
+
+
